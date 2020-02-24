@@ -21,6 +21,8 @@ func (app *application) routes() http.Handler {
 	mux.Post("/time", standardMiddleware.ThenFunc(app.timePost))
 	mux.Get("/ping", standardMiddleware.ThenFunc(app.pingForm))
 	mux.Post("/ping", standardMiddleware.ThenFunc(app.pingPost))
+	mux.Get("/continuous", standardMiddleware.ThenFunc(app.continuous))
+	mux.Post("/timeservice", standardMiddleware.ThenFunc(app.timeService))
 
 	//fileServer := http.FileServer(http.Dir("./ui/static/"))
 	//mux.Get("/static/", http.StripPrefix("/static", fileServer))
