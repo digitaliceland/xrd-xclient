@@ -1,0 +1,91 @@
+{{define "base"}}
+
+    <!DOCTYPE html>
+    <html lang="en" class="layout-pf layout-pf-fixed">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/patternfly/3.24.0/css/patternfly.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/patternfly/3.24.0/css/patternfly-additions.min.css">
+        <title>{{template "title" .}} - x-client</title>
+
+    </head>
+    <body>
+
+    <nav class="navbar navbar-default navbar-pf" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <img src="data:image/png;base64,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" alt="xclient" />
+            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-primary">
+                <li{{if eq .Active "ping"}} class="active"{{end}}>
+                    <a href="/ping">Ping Test</a>
+                </li>
+                <li{{if eq .Active "time"}} class="active"{{end}}>
+                    <a href="/time">Time Test</a>
+                </li>
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#about-modal">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    {{with .Flash}}
+    <div class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span class="pficon pficon-close"></span>
+        </button>
+        <span class="pficon pficon-error-circle-o"></span>
+        {{.}}
+    </div>
+    {{end}}
+
+    {{template "main" .}}
+
+    {{template "footer" .}}
+    <div class="modal fade" id="about-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content about-modal-pf">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        <span class="pficon pficon-close"></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h1>X-Client</h1>
+                    <div class="product-versions-pf">
+                        <ul class="list-unstyled">
+                            <li><strong>Version</strong> 0.1.0</li>
+                        </ul>
+                        <div>
+                            This software is released under the <a target="_blank" href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html">General Public License (GPLv2 or later)</a>.
+                        </div>
+                    </div>
+                    <div class="trademark-pf">
+                        &copy;2020 Opin Kerfi hf<br><br>
+                        X-Road® is a registered trademark of the Estonian Information System Authority (RIA).
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <img src="data:image/png;base64,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" alt="logo">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/patternfly/3.24.0/js/patternfly.min.js"></script>
+    </body>
+    </html>
+
+{{end}}

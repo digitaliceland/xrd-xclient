@@ -1,0 +1,55 @@
+{{template "base" .}}
+
+{{define "title"}}Ping test{{end}}
+
+{{define "main"}}
+
+    <div class="container container-cards-pf">
+        <div class="row">
+            <p>&nbsp</p>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Ping a web service over X-Road</div>
+                    <div class="panel-body">
+                        {{if .Result}}
+                            <h3>Operation Result</h3>
+                            <pre>{{.Result}}</pre>
+                            <h3>Request Headers</h3>
+                            <pre>{{.RequestHeaders}}</pre>
+                            <h3>Reply Headers</h3>
+                            <pre>{{.ReplyHeaders}}</pre>
+                        {{end}}
+                        <form action="/ping" method="post">
+                            {{with .Form}}
+                                <div class="form-group">
+                                    <label>X-road security server URL:</label>
+                                    {{with .Errors.Get "url"}}{{template "error" .}}{{end}}
+                                    <input type="text" name="url" value="{{.Get "url"}}" placeholder="http://localhost:80" class="form-control" maxlength="255">
+                                    <small>Please do not include the path and query string (anything following the host name and port)</small>
+                                </div>
+                                <div class="form-group">
+                                    <label>X-road client ID:</label>
+                                    {{with .Errors.Get "client"}}{{template "error" .}}{{end}}
+                                    <input type="text" name="client" value="{{.Get "client"}}" placeholder="CS/ORG/1111/TestClient" class="form-control" maxlength="255">
+                                </div>
+                                <div class="form-group">
+                                    <label>X road service ID:</label>
+                                    {{with .Errors.Get "service"}}{{template "error" .}}{{end}}
+                                    <input type="text" name="service" value="{{.Get "service"}}" placeholder="CS/ORG/1111/TestService/TEST123" class="form-control" maxlength="255">
+                                </div>
+
+                                <input type="submit" class="btn btn-success" value="Submit Test">
+                            {{end}}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+{{end}}
+
+
