@@ -15,20 +15,8 @@ type application struct {
 	errorLog *log.Logger
 	infoLog  *log.Logger
 	session  *sessions.Session
-/*	snippets interface {
-		Insert(string, string, string) (int, error)
-		Get(int) (*models.Snippet, error)
-		Latest() ([]*models.Snippet, error)
-	}
-*/
 	templateCache map[string]*template.Template
-/*	users         interface {
-		Insert(string, string, string) error
-		Authenticate(string, string) (int, error)
-		Get(int) (*models.User, error)
-		ChangePassword(int, string, string) error
-	}
-*/}
+}
 
 
 func StartWWW(addr string) {
@@ -53,9 +41,7 @@ func StartWWW(addr string) {
 		errorLog:      errorLog,
 		infoLog:       infoLog,
 		session:       session,
-		//snippets:      &mysql.SnippetModel{DB: db},
 		templateCache: templateCache,
-		//users:         &mysql.UserModel{DB: db},
 	}
 
 

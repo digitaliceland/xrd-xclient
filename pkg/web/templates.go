@@ -9,14 +9,9 @@ import (
 )
 
 type templateData struct {
-	//CSRFToken       string
-	//CurrentYear     int
 	Flash           string
 	Form            *forms.Form
 	IsAuthenticated bool
-	//Snippet         *models.Snippet
-	//Snippets        []*models.Snippet
-	//User            *models.User
 	Result			string
 	Active			string
 	RequestHeaders	string
